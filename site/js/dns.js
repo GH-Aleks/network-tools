@@ -108,7 +108,7 @@
   // ------------------------------------------------------------ Darstellung
 
   function formatTTL(sec) {
-    if (!Number.isFinite(sec) || sec < 0) return '–';
+    if (!Number.isFinite(sec) || sec < 0) return '-';
     sec = Math.floor(sec);
     if (sec < 60) return sec + ' s';
     var parts = [];

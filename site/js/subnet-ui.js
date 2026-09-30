@@ -76,7 +76,7 @@
     row(dl, 'Nutzbare Hosts', C.fmtInt(calc.hosts), { plain: true });
     row(dl, 'Adressen insgesamt', C.fmtInt(calc.total), { plain: true });
     row(dl, 'Adressklasse', cl.class, { plain: true });
-    var scope = cl.label + (cl.rfc ? ' – ' + cl.rfc : '');
+    var scope = cl.label + (cl.rfc ? ', ' + cl.rfc : '');
     row(dl, 'Bereich', scope, { plain: true });
     if (calc.contains && calc.contains.length) {
       row(dl, 'Enthält Sonderbereiche', calc.contains.join('; '), { plain: true });
@@ -157,7 +157,7 @@
         el('td', { class: 'mono', 'data-label': 'Netz' }, sn.strings.cidr),
         el('td', { class: 'mono', 'data-label': 'Erste Adresse' }, sn.strings.first),
         el('td', { class: 'mono', 'data-label': 'Letzte Adresse' }, sn.strings.last),
-        el('td', { class: 'mono', 'data-label': 'Broadcast' }, sn.hasBroadcast ? sn.strings.broadcast : '–'),
+        el('td', { class: 'mono', 'data-label': 'Broadcast' }, sn.hasBroadcast ? sn.strings.broadcast : '-'),
         el('td', { class: 'num', 'data-label': 'Hosts' }, C.fmtInt(sn.hosts))
       ]));
     });

@@ -53,8 +53,8 @@ test('formatTTL', () => {
   assert.equal(Dns.formatTTL(3600), '3600 s (1 h)');
   assert.equal(Dns.formatTTL(86400), '86400 s (1 d)');
   assert.equal(Dns.formatTTL(90061), '90061 s (1 d 1 h 1 min)');
-  assert.equal(Dns.formatTTL(undefined), '–');
-  assert.equal(Dns.formatTTL(-5), '–');
+  assert.equal(Dns.formatTTL(undefined), '-');
+  assert.equal(Dns.formatTTL(-5), '-');
 });
 
 test('summarize: erfolgreiche A-Antwort', () => {

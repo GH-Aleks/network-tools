@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Netzwerk-Werkzeuge</title>
+  <meta name="description" content="Kleine Netzwerk-Werkzeuge für den IT-Alltag: Subnetz-Rechner, DNS-Abfrage, IP-Anzeige, Passwort-Generator und Port-Übersicht. Alles läuft im Browser.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-current="page"><img src="favicon.svg" alt="" width="26" height="26"><span>Netzwerk-Werkzeuge</span></a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="subnetz.html">Subnetz-Rechner</a></li>
+          <li><a href="dns.html">DNS-Abfrage</a></li>
+          <li><a href="meine-ip.html">Meine IP</a></li>
+          <li><a href="passwort.html">Passwort</a></li>
+          <li><a href="ports.html">Ports</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt" class="wrap" tabindex="-1">
+    <h1>Netzwerk-Werkzeuge</h1>
+    <p class="lead">Fünf kleine Werkzeuge, wie sie im IT-Support und Service Desk täglich gebraucht werden. Gerechnet wird im Browser, es gibt kein Konto, keine Cookies und kein Tracking.</p>
+
+    <ul class="grid-cards">
+      <li><a class="tool-card" href="subnetz.html"><h2>Subnetz-Rechner</h2><p>IPv4-Adresse mit Präfix oder Maske: Netz, Broadcast, Hosts, Wildcard, Binärdarstellung. Dazu das Aufteilen in gleich große Teilnetze.</p></a></li>
+      <li><a class="tool-card" href="dns.html"><h2>DNS-Abfrage</h2><p>A, AAAA, MX, TXT und mehr per DNS-over-HTTPS nachschlagen, mit verständlicher Erklärung von NOERROR, NXDOMAIN und SERVFAIL.</p></a></li>
+      <li><a class="tool-card" href="meine-ip.html"><h2>Meine IP &amp; Browser</h2><p>Öffentliche IP-Adresse (IPv4 oder IPv6) und Browserdaten, als Text kopierbar für Support-Tickets.</p></a></li>
+      <li><a class="tool-card" href="passwort.html"><h2>Passwort-Generator</h2><p>Zufällige Passwörter mit <code>crypto.getRandomValues</code>, einstellbare Länge und Zeichengruppen, Entropie-Schätzung.</p></a></li>
+      <li><a class="tool-card" href="ports.html"><h2>Port-Übersicht</h2><p>Häufige TCP/UDP-Ports mit Dienst, Beschreibung und der Angabe, ob das Protokoll verschlüsselt ist. Mit Suche.</p></a></li>
+    </ul>
+
+    <div class="card">
+      <h2>Was bleibt im Browser, was geht wohin?</h2>
+      <ul>
+        <li><strong>Subnetz-Rechner, Passwort-Generator, Port-Übersicht:</strong> reine Berechnung im Browser. Es wird nichts gesendet und nichts gespeichert.</li>
+        <li><strong>DNS-Abfrage:</strong> Ihr Browser fragt den gewählten Anbieter (Cloudflare oder Google) direkt. Dieser sieht die Domain und Ihre IP-Adresse. Erst beim Klick auf „Abfragen“.</li>
+        <li><strong>Meine IP:</strong> fragt den eigenen Server dieser Seite, welche Adresse bei ihm ankommt.</li>
+      </ul>
+      <p>Einzelheiten: <a href="datenschutz.html">Datenschutz</a>.</p>
+    </div>
+
+    <p class="muted small">Dieses Projekt wurde KI-gestützt umgesetzt. Die Berechnungslogik ist mit automatisierten Tests abgesichert, der gesamte Quelltext liegt offen auf GitHub.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Ein Projekt von <a href="https://aleksanderbauer.de">Aleksander Bauer</a> · <a href="https://github.com/GH-Aleks/network-tools">Quellcode auf GitHub</a></p>
+      <ul>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li>Keine Cookies, kein Tracking</li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Datenschutz – Netzwerk-Werkzeuge</title>
+  <meta name="description" content="Was in den Netzwerk-Werkzeugen im Browser bleibt und was an wen gesendet wird.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="favicon.svg" alt="" width="26" height="26"><span>Netzwerk-Werkzeuge</span></a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="subnetz.html">Subnetz-Rechner</a></li>
+          <li><a href="dns.html">DNS-Abfrage</a></li>
+          <li><a href="meine-ip.html">Meine IP</a></li>
+          <li><a href="passwort.html">Passwort</a></li>
+          <li><a href="ports.html">Ports</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt" class="wrap" tabindex="-1">
+    <h1>Datenschutz</h1>
+    <p class="lead">Kurz gesagt: Die Werkzeuge rechnen im Browser. Es gibt keine Cookies, keine Analyse-Dienste, keine Werbung und keine nachgeladenen Schriften oder Skripte von fremden Servern.</p>
+
+    <h2>Was geht wohin?</h2>
+    <div class="card">
+      <table class="stack">
+        <caption class="sr-only">Datenflüsse je Werkzeug</caption>
+        <thead>
+          <tr><th scope="col">Werkzeug</th><th scope="col">Was wird gesendet?</th><th scope="col">An wen?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Werkzeug">Subnetz-Rechner</td><td data-label="Was wird gesendet?">Nichts. Die Eingaben werden im Browser berechnet.</td><td data-label="An wen?">An niemanden</td></tr>
+          <tr><td data-label="Werkzeug">Passwort-Generator</td><td data-label="Was wird gesendet?">Nichts. Das Passwort entsteht im Browser und wird nicht gespeichert.</td><td data-label="An wen?">An niemanden</td></tr>
+          <tr><td data-label="Werkzeug">Port-Übersicht</td><td data-label="Was wird gesendet?">Nichts. Die Daten sind fest in der Seite enthalten.</td><td data-label="An wen?">An niemanden</td></tr>
+          <tr><td data-label="Werkzeug">DNS-Abfrage</td><td data-label="Was wird gesendet?">Die eingegebene Domain und der Eintragstyp. Der Anbieter sieht dabei technisch bedingt Ihre IP-Adresse. Die Abfrage startet erst, wenn Sie auf „Abfragen“ klicken.</td><td data-label="An wen?">Direkt vom Browser an den gewählten Anbieter: Cloudflare (cloudflare-dns.com) oder Google (dns.google). Der Server dieser Seite erhält sie nicht.</td></tr>
+          <tr><td data-label="Werkzeug">Meine IP &amp; Browser</td><td data-label="Was wird gesendet?">Eine normale Anfrage an <code>/api/ip</code>. Der Server gibt Ihre IP-Adresse und die Kopfzeilen User-Agent und Accept-Language zurück, die Ihr Browser ohnehin mitschickt. Die übrigen Browserdaten liest die Seite lokal aus.</td><td data-label="An wen?">An den Server dieser Seite</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Datenschutzhinweise der DNS-Anbieter</h2>
+    <ul>
+      <li><a href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer">Cloudflare</a></li>
+      <li><a href="https://developers.google.com/speed/public-dns/privacy" rel="noopener noreferrer">Google Public DNS</a></li>
+    </ul>
+
+    <h2>Speicherung im Browser</h2>
+    <p>Die Werkzeuge setzen keine Cookies und nutzen weder Local Storage noch Session Storage. Nach dem Schließen oder Neuladen der Seite ist nichts mehr vorhanden.</p>
+
+    <h2>Server-Protokolle, Anbieter, Kontakt</h2>
+    <p>Wie jeder Webserver kann der Server, der diese Seite ausliefert, technisch bedingt Zugriffe protokollieren. Angaben zum Anbieter, zur Protokollierung und zu Ihren Rechten stehen auf <a href="https://aleksanderbauer.de">aleksanderbauer.de</a> (Impressum und Datenschutzerklärung).</p>
+
+    <h2>Quelltext</h2>
+    <p>Der gesamte Quelltext ist öffentlich: <a href="https://github.com/GH-Aleks/network-tools">github.com/GH-Aleks/network-tools</a>. Wer es genau wissen will, kann dort nachlesen, was die Seiten tun.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Ein Projekt von <a href="https://aleksanderbauer.de">Aleksander Bauer</a> · <a href="https://github.com/GH-Aleks/network-tools">Quellcode auf GitHub</a></p>
+      <ul>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li>Keine Cookies, kein Tracking</li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DNS-Abfrage – Netzwerk-Werkzeuge</title>
+  <meta name="description" content="DNS-Einträge per DNS-over-HTTPS abfragen (A, AAAA, CNAME, MX, TXT, NS, SOA, CAA) mit verständlicher Statuserklärung.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src https://cloudflare-dns.com https://dns.google; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="favicon.svg" alt="" width="26" height="26"><span>Netzwerk-Werkzeuge</span></a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="subnetz.html">Subnetz-Rechner</a></li>
+          <li><a href="dns.html" aria-current="page">DNS-Abfrage</a></li>
+          <li><a href="meine-ip.html">Meine IP</a></li>
+          <li><a href="passwort.html">Passwort</a></li>
+          <li><a href="ports.html">Ports</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt" class="wrap" tabindex="-1">
+    <h1>DNS-Abfrage</h1>
+    <p class="lead">Schlägt Einträge einer Domain über DNS-over-HTTPS nach und erklärt das Ergebnis.</p>
+
+    <noscript><div class="notice warn">Dieses Werkzeug benötigt JavaScript.</div></noscript>
+
+    <div class="notice info" id="provider-info" role="note"></div>
+
+    <div class="card">
+      <form id="dns-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Domain</label>
+            <input type="text" id="name" name="name" class="mono" value="example.com" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="url" aria-describedby="name-hint">
+            <span class="hint" id="name-hint">z. B. example.com, auch eine eingefügte URL oder Umlaut-Domain</span>
+          </div>
+          <div class="field">
+            <label for="type">Eintragstyp</label>
+            <select id="type" name="type" aria-describedby="type-help">
+              <option value="A" selected>A</option>
+              <option value="AAAA">AAAA</option>
+              <option value="CNAME">CNAME</option>
+              <option value="MX">MX</option>
+              <option value="TXT">TXT</option>
+              <option value="NS">NS</option>
+              <option value="SOA">SOA</option>
+              <option value="CAA">CAA</option>
+            </select>
+            <span class="hint" id="type-help"></span>
+          </div>
+          <div class="field">
+            <label for="provider">DNS-Anbieter</label>
+            <select id="provider" name="provider">
+              <option value="cloudflare" selected>Cloudflare (1.1.1.1)</option>
+              <option value="google">Google Public DNS (8.8.8.8)</option>
+            </select>
+          </div>
+          <div class="field">
+            <button type="submit" id="dns-submit">Abfragen</button>
+          </div>
+        </div>
+        <div class="examples">
+          <span class="label">Beispiele:</span>
+          <button type="button" class="secondary small" data-example data-name="example.com" data-type="A">example.com A</button>
+          <button type="button" class="secondary small" data-example data-name="example.com" data-type="MX">example.com MX</button>
+          <button type="button" class="secondary small" data-example data-name="example.com" data-type="TXT">example.com TXT</button>
+          <button type="button" class="secondary small" data-example data-name="dieser-name-existiert-nicht.invalid" data-type="A">nicht vorhandener Name</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="message" role="alert"></div>
+    <div id="result" aria-live="polite" aria-busy="false"></div>
+
+    <section aria-labelledby="status-heading">
+      <h2 id="status-heading">Was bedeuten die Antwortcodes?</h2>
+      <ul class="legend-list">
+        <li><strong>NOERROR</strong>: Die Abfrage hat geklappt. Ohne Einträge heißt das „NODATA“: Der Name existiert, hat aber keinen Datensatz dieses Typs.</li>
+        <li><strong>NXDOMAIN</strong>: Der Name existiert nicht, meist ein Tippfehler oder ein fehlender Eintrag.</li>
+        <li><strong>SERVFAIL</strong>: Der Resolver konnte nicht antworten, z. B. wegen defekter Nameserver oder fehlgeschlagener DNSSEC-Prüfung. Das ist ein Serverproblem, nicht „Name existiert nicht“.</li>
+        <li><strong>REFUSED</strong>: Der Server verweigert die Antwort.</li>
+        <li><strong>TTL</strong>: Wie lange die Antwort zwischengespeichert werden darf. Nach einer DNS-Änderung kann es so lange dauern, bis alle sie sehen.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Ein Projekt von <a href="https://aleksanderbauer.de">Aleksander Bauer</a> · <a href="https://github.com/GH-Aleks/network-tools">Quellcode auf GitHub</a></p>
+      <ul>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li>Keine Cookies, kein Tracking</li>
+      </ul>
+    </div>
+  </footer>
+  <script src="js/dns.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/dns-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subnetz-Rechner – Netzwerk-Werkzeuge</title>
+  <meta name="description" content="IPv4-Subnetz-Rechner: Netzadresse, Broadcast, nutzbare Hosts, Wildcard, Binärdarstellung und Aufteilung in Teilnetze. Rechnet im Browser.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="favicon.svg" alt="" width="26" height="26"><span>Netzwerk-Werkzeuge</span></a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="subnetz.html" aria-current="page">Subnetz-Rechner</a></li>
+          <li><a href="dns.html">DNS-Abfrage</a></li>
+          <li><a href="meine-ip.html">Meine IP</a></li>
+          <li><a href="passwort.html">Passwort</a></li>
+          <li><a href="ports.html">Ports</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt" class="wrap" tabindex="-1">
+    <h1>IPv4-Subnetz-Rechner</h1>
+    <p class="lead">Adresse und Präfix (CIDR) oder Subnetzmaske eingeben. Alles wird im Browser berechnet.</p>
+
+    <noscript><div class="notice warn">Dieses Werkzeug benötigt JavaScript.</div></noscript>
+
+    <div class="card">
+      <form id="subnet-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="ip">IPv4-Adresse</label>
+            <input type="text" id="ip" name="ip" class="mono" value="192.168.1.10" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="decimal" aria-describedby="ip-hint">
+            <span class="hint" id="ip-hint">z. B. 192.168.1.10, auch mit Schrägstrich: 10.0.0.5/8</span>
+          </div>
+          <div class="field">
+            <label for="mask">Präfix oder Subnetzmaske</label>
+            <input type="text" id="mask" name="mask" class="mono" value="24" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="mask-hint">
+            <span class="hint" id="mask-hint">z. B. 24, /24 oder 255.255.255.0</span>
+          </div>
+          <div class="field">
+            <button type="submit">Berechnen</button>
+          </div>
+        </div>
+        <div class="examples">
+          <span class="label">Beispiele:</span>
+          <button type="button" class="secondary small" data-example data-ip="192.168.1.10" data-mask="24">192.168.1.10 /24</button>
+          <button type="button" class="secondary small" data-example data-ip="172.16.5.130" data-mask="255.255.255.192">172.16.5.130 /26</button>
+          <button type="button" class="secondary small" data-example data-ip="10.1.2.3" data-mask="31">/31 (Punkt-zu-Punkt)</button>
+          <button type="button" class="secondary small" data-example data-ip="8.8.8.8" data-mask="32">/32 (ein Host)</button>
+          <button type="button" class="secondary small" data-example data-ip="100.64.0.1" data-mask="10">CGNAT 100.64.0.0/10</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="message" role="alert"></div>
+    <div id="result" aria-live="polite"></div>
+
+    <section id="split-box" hidden aria-labelledby="split-heading">
+      <h2 id="split-heading">In gleich große Teilnetze aufteilen</h2>
+      <div class="card">
+        <form id="split-form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="split-n">Anzahl der Teilnetze</label>
+              <select id="split-n" name="n"></select>
+              <span class="hint">Nur Zweierpotenzen, höchstens 4096 Teilnetze.</span>
+            </div>
+          </div>
+        </form>
+        <div id="split-result" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Hinweise</h2>
+      <ul>
+        <li>Nutzbare Hosts: 2<sup>32 − Präfix</sup> − 2 (Netz- und Broadcast-Adresse sind nicht vergeben).</li>
+        <li><strong>/31</strong> (RFC 3021): Punkt-zu-Punkt-Verbindung, beide Adressen sind nutzbar, es gibt keinen Broadcast.</li>
+        <li><strong>/32</strong>: genau eine Adresse (Host-Route).</li>
+        <li>Die Adressklasse (A–E) ist historisch; heute wird klassenlos (CIDR) geroutet. Angezeigt wird sie nur zur Orientierung.</li>
+        <li>Erkannte Sonderbereiche: private Netze nach RFC 1918, Carrier-Grade NAT (100.64.0.0/10, RFC 6598), Loopback, Link-Local, Dokumentationsnetze, Multicast und weitere.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Ein Projekt von <a href="https://aleksanderbauer.de">Aleksander Bauer</a> · <a href="https://github.com/GH-Aleks/network-tools">Quellcode auf GitHub</a></p>
+      <ul>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li>Keine Cookies, kein Tracking</li>
+      </ul>
+    </div>
+  </footer>
+  <script src="js/subnet.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/subnet-ui.js"></script>
+</body>
+</html>

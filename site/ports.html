@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Port-Übersicht – Netzwerk-Werkzeuge</title>
+  <meta name="description" content="Häufige TCP/UDP-Ports mit Dienst, Beschreibung und Verschlüsselungs-Hinweis, durchsuchbar.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="favicon.svg" alt="" width="26" height="26"><span>Netzwerk-Werkzeuge</span></a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="subnetz.html">Subnetz-Rechner</a></li>
+          <li><a href="dns.html">DNS-Abfrage</a></li>
+          <li><a href="meine-ip.html">Meine IP</a></li>
+          <li><a href="passwort.html">Passwort</a></li>
+          <li><a href="ports.html" aria-current="page">Ports</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt" class="wrap" tabindex="-1">
+    <h1>Port-Übersicht</h1>
+    <p class="lead">Eine Auswahl häufig genutzter Ports, wie sie im Support immer wieder vorkommen. Suche nach Nummer, Dienst oder Stichwort.</p>
+
+    <noscript><div class="notice warn">Dieses Werkzeug benötigt JavaScript.</div></noscript>
+
+    <div class="card">
+      <form id="ports-form" role="search" novalidate>
+        <div class="field">
+          <label for="q">Suche</label>
+          <input type="search" id="q" name="q" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="z. B. 443, ssh, mail" aria-describedby="count">
+        </div>
+      </form>
+      <p class="muted small" id="count" aria-live="polite"></p>
+
+      <table class="stack" id="ports-table">
+        <caption class="sr-only">Häufige Ports</caption>
+        <thead>
+          <tr>
+            <th scope="col">Port</th>
+            <th scope="col">Dienst</th>
+            <th scope="col">Beschreibung</th>
+            <th scope="col">Verschlüsselt</th>
+            <th scope="col">Hinweis</th>
+          </tr>
+        </thead>
+        <tbody id="ports-body"></tbody>
+      </table>
+      <p id="empty" hidden>Keine Treffer. Versuchen Sie eine Portnummer (z. B. <code>443</code>) oder einen Dienstnamen.</p>
+    </div>
+
+    <p class="muted small">Dies ist eine Auswahl, keine vollständige Liste. Die amtliche Zuordnung führt die IANA („Service Name and Transport Protocol Port Number Registry“). Ob ein Dienst wirklich verschlüsselt arbeitet, hängt von der Konfiguration ab.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Ein Projekt von <a href="https://aleksanderbauer.de">Aleksander Bauer</a> · <a href="https://github.com/GH-Aleks/network-tools">Quellcode auf GitHub</a></p>
+      <ul>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li>Keine Cookies, kein Tracking</li>
+      </ul>
+    </div>
+  </footer>
+  <script src="js/ports.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/ports-ui.js"></script>
+</body>
+</html>

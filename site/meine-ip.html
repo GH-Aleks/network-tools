@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meine IP und Browser – Netzwerk-Werkzeuge</title>
+  <meta name="description" content="Zeigt die öffentliche IP-Adresse (IPv4 oder IPv6) und Browserdaten an; als Text kopierbar für Support-Tickets.">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="favicon.svg" alt="" width="26" height="26"><span>Netzwerk-Werkzeuge</span></a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="subnetz.html">Subnetz-Rechner</a></li>
+          <li><a href="dns.html">DNS-Abfrage</a></li>
+          <li><a href="meine-ip.html" aria-current="page">Meine IP</a></li>
+          <li><a href="passwort.html">Passwort</a></li>
+          <li><a href="ports.html">Ports</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt" class="wrap" tabindex="-1">
+    <h1>Meine IP &amp; Browser</h1>
+    <p class="lead">Die öffentliche Adresse, mit der Sie aus Sicht dieses Servers im Internet auftreten, und die wichtigsten Browserdaten. Praktisch für Support-Anfragen.</p>
+
+    <noscript><div class="notice warn">Dieses Werkzeug benötigt JavaScript.</div></noscript>
+
+    <section aria-labelledby="ip-heading">
+      <h2 id="ip-heading">Öffentliche IP-Adresse</h2>
+      <div class="card">
+        <div id="ip-box" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="browser-heading">
+      <h2 id="browser-heading">Browser und Gerät</h2>
+      <div class="card">
+        <div id="browser-box"></div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <span id="ip-actions" class="actions"></span>
+      <button type="button" class="secondary" id="reload">Neu ermitteln</button>
+    </div>
+
+    <p class="muted small">Die IP-Adresse wird über <code>/api/ip</code> vom Server dieser Seite geliefert. Die Browserdaten liest die Seite lokal aus und sendet sie nirgendwohin. Siehe <a href="datenschutz.html">Datenschutz</a>.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Ein Projekt von <a href="https://aleksanderbauer.de">Aleksander Bauer</a> · <a href="https://github.com/GH-Aleks/network-tools">Quellcode auf GitHub</a></p>
+      <ul>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li>Keine Cookies, kein Tracking</li>
+      </ul>
+    </div>
+  </footer>
+  <script src="js/ipinfo.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/ipinfo-ui.js"></script>
+</body>
+</html>

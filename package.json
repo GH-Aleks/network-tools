@@ -1,0 +1,16 @@
+{
+  "name": "network-tools",
+  "version": "1.0.0",
+  "description": "Kleine Netzwerk-Werkzeuge im Browser (statische Seite, keine Abhängigkeiten)",
+  "private": true,
+  "license": "MIT",
+  "author": "Aleksander Bauer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GH-Aleks/network-tools.git"
+  },
+  "scripts": {
+    "test": "node --test",
+    "serve": "python -m http.server -d site"
+  }
+}

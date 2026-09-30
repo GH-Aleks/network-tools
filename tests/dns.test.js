@@ -19,7 +19,7 @@ test('normalizeName: Umlaut-Domain wird zu Punycode', () => {
 });
 
 test('normalizeName: ungültige Eingaben', () => {
-  for (const bad of ['', '   ', 'a b.de', 'exa$mple.com', 'foo..bar', '.example.com', '-a.com', 'a-.com', 'user@example.com', 'example.com:8080', 'example.com/pfad', '8.8.8.8']) {
+  for (const bad of ['', '   ', 'a b.de', 'exa$mple.com', 'foo..bar', '.example.com', '-a.com', 'a-.com', 'name@host', 'example.com:8080', 'example.com/pfad', '8.8.8.8']) {
     const r = Dns.normalizeName(bad);
     assert.equal(r.ok, false, `sollte abgelehnt werden: "${bad}"`);
     assert.ok(r.error && r.error.length > 5);
